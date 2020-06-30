@@ -8,7 +8,7 @@ export default Service.extend({
   account: alias("user.account"),
   isAuthenticated: alias("session.isAuthenticated"),
   load() {
-    if (this.get("session.isAuthenticated")) {
+    if (this.isAuthenticated) {
       return this.store
         .queryRecord("user", { me: true })
         .then(user => {

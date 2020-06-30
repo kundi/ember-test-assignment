@@ -5,8 +5,8 @@ export default OAuth2Bearer.extend({
   session: service("session"),
   authorize(data, header) {
     this._super(data, header);
-    if (this.get("session.data.accountId")) {
-      header("X-AccountId", this.get("session.data.accountId"));
+    if (this.session.data.accountId) {
+      header("X-AccountId", this.session.data.accountId);
     }
   }
 });
