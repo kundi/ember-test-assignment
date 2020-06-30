@@ -10,7 +10,7 @@ export default Route.extend({
     async signup() {
       const user = this.controller.model;
       await user.save();
-      await this.get("session").authenticate(
+      await this.session.authenticate(
         "authenticator:oauth2",
         user.email,
         user.password

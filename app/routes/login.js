@@ -5,7 +5,7 @@ export default Route.extend({
   session: service(),
   actions: {
     login(email, password) {
-      this.get("session")
+      this.session
         .authenticate("authenticator:oauth2", email, password)
         .then(() => this.transitionTo("dashboard"))
         .catch(() => {

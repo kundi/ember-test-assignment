@@ -15,12 +15,12 @@ export default Route.extend(ApplicationRouteMixin, {
     this._loadCurrentUser();
   },
   _loadCurrentUser() {
-    return this.get("currentSession").load();
+    return this.currentSession.load();
   },
   actions: {
     logout() {
-      this.get("session").invalidate();
-      this.get("currentSession").nullify();
+      this.session.invalidate();
+      this.currentSession.nullify();
     }
   }
 });

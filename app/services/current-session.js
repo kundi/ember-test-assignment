@@ -9,14 +9,14 @@ export default Service.extend({
   isAuthenticated: alias("session.isAuthenticated"),
   load() {
     if (this.get("session.isAuthenticated")) {
-      return this.get("store")
+      return this.store
         .queryRecord("user", { me: true })
         .then(user => {
           this.set("user", user);
-          this.get("session").set("data.accountId", user.get("account.id"));
+          this.session.set("data.accountId", user.get("account.id"));
         })
         .catch(() => {
-          this.get("session")
+          this.session
             .invalidate()
             .then(() => {
               window.location = "/";
