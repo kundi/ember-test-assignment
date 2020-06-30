@@ -1,21 +1,14 @@
 import Route from "@ember/routing/route";
 import { inject as service } from "@ember/service";
 
-export default Route.extend({
-  session: service(),
+export default class SignupRoute extends Route {
+  @service session;
+
+  beforeModel() {
+    this.session.prohibitAuthentication("dashboard");
+  }
+
   model() {
     return this.store.createRecord("user");
-  },
-  actions: {
-    async signup() {
-      const user = this.controller.model;
-      await user.save();
-      await this.session.authenticate(
-        "authenticator:oauth2",
-        user.email,
-        user.password
-      );
-      this.transitionTo("dashboard");
-    }
   }
-});
+}

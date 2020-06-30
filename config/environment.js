@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: "ember-starter-project",
+    modulePrefix: "ember-test-assignment",
     environment,
     rootURL: "/",
     locationType: "auto",
@@ -27,11 +27,11 @@ module.exports = function(environment) {
   if (environment === "development") {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    ENV.APP.LOG_TRANSITIONS = true;
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.serverURL = "http://localhost:3000";
+    ENV.serverURL = "https://expert-advice-api.herokuapp.com";
     ENV.webURL = "http://localhost:4200";
     ENV.webSocketURL = "ws://localhost:3000/cable";
   }
@@ -49,7 +49,7 @@ module.exports = function(environment) {
   }
 
   if (environment === "production") {
-    // here you can enable a production-specific feature
+    ENV.serverURL = "https://expert-advice-api.herokuapp.com";
   }
 
   ENV.apiBaseURL = ENV.serverURL + "/" + ENV.apiNamespace;

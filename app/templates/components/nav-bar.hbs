@@ -1,17 +1,17 @@
-<BsNavbar @type="dark" @backgroundColor="dark" @class="fixed-top shadow flex-md-nowrap" @collapsed={{collapsed}} @onCollapse={{action (mut collapsed) true}} @onExpand={{action (mut collapsed) false}} as |navbar|>
+<BsNavbar @type="dark" @backgroundColor="dark" @class="fixed-top shadow flex-md-nowrap" @collapsed={{this.collapsed}} @onCollapse={{fn (mut this.collapsed) true}} @onExpand={{fn (mut this.collapsed) false}} as |navbar|>
   <div class="navbar-header">
     {{navbar.toggle}}
-    <LinkTo @route="dashboard" class="navbar-brand">EmberStarterProject</LinkTo>
+    <LinkTo @route="dashboard" class="navbar-brand">Ember Test Assignment</LinkTo>
   </div>
   <navbar.content>
     <navbar.nav @class="ml-auto" as |nav|>
-      {{#if currentSession.isAuthenticated}}
+      {{#if this.session.user.email}}
         <nav.dropdown as |dd|>
-          <dd.toggle>{{currentSession.user.email}} <span class="caret"></span></dd.toggle>
+          <dd.toggle>{{this.session.user.email}} <span class="caret"></span></dd.toggle>
           <dd.menu as |ddm|>
             <ddm.item>{{#ddm.link-to "dashboard"}}Dashboard{{/ddm.link-to}}</ddm.item>
             <div class="dropdown-divider"></div>
-            <ddm.item><a href="#" class="dropdown-item" {{action 'logout'}}>Sign out</a></ddm.item>
+            <ddm.item><a href="#" class="dropdown-item" {{on "click" this.logout}}>Sign out</a></ddm.item>
           </dd.menu>
         </nav.dropdown>
       {{else}}

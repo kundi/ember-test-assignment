@@ -1,6 +1,6 @@
 import Model, { attr } from '@ember-data/model';
 
-export default Model.extend({
-  email: attr("string"),
-  password: attr("string")
-});
+export default class User extends Model {
+  @attr("string") email;
+  @attr("string") password;
+}
