@@ -1,11 +1,11 @@
-import DS from "ember-data";
+import JSONAPIAdapter from '@ember-data/adapter/json-api';
 import { underscore } from "@ember/string";
 import { pluralize } from "ember-inflector";
 import ENV from "../config/environment";
 import DataAdapterMixin from "ember-simple-auth/mixins/data-adapter-mixin";
 import { isPresent } from "@ember/utils";
 
-export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
+export default JSONAPIAdapter.extend(DataAdapterMixin, {
   authorizer: "authorizer:oauth2",
   namespace: ENV.apiNamespace,
   host: ENV.serverURL,
