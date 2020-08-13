@@ -24,14 +24,20 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.serverURL = "https://ember-test-assignment.com";
+
   if (environment === "development") {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    ENV.APP.LOG_TRANSITIONS = true;
-    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    // ENV.APP.LOG_TRANSITIONS = true;
+    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.serverURL = "https://expert-advice-api.herokuapp.com";
+    ENV['ember-cli-mirage'] = {
+      enabled: true,
+      trackRequests: true
+    };
+
     ENV.webURL = "http://localhost:4200";
     ENV.webSocketURL = "ws://localhost:3000/cable";
   }
@@ -46,10 +52,6 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = "#ember-testing";
     ENV.APP.autoboot = false;
-  }
-
-  if (environment === "production") {
-    ENV.serverURL = "https://expert-advice-api.herokuapp.com";
   }
 
   ENV.apiBaseURL = ENV.serverURL + "/" + ENV.apiNamespace;
