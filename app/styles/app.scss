@@ -5,6 +5,6 @@ body, .h-screen {
   height: 100vh;
 }
 
-.form-group.has-error input {
-  border-color: #dc3545;
+.login-form__error {
+  color: #dc3545;
 }

@@ -15,8 +15,6 @@ export default class LoginController extends Controller {
     event.preventDefault();
     try {
       await this.session.authenticate("authenticator:oauth2", email, password);
-      await this.session.loadUser();
-      this.transitionTo("dashboard");
     } catch {
       this.errorMessage = "Invalid login.";
     }

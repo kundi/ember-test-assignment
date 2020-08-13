@@ -5,8 +5,6 @@ import { action } from "@ember/object";
 export default class ApplicationRoute extends Route {
   @service session;
 
-  routeAfterAuthentication = "dashboard";
-
   @action
   logout() {
     this.session.invalidate();

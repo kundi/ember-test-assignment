@@ -2,6 +2,7 @@ import ENV from "ember-test-assignment/config/environment";
 import { Response } from 'miragejs';
 
 export default function() {
+  this.logging = true;
   this.timing = 0;
 
   this.urlPrefix = ENV.serverURL;

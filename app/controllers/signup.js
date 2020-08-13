@@ -14,6 +14,6 @@ export default class LoginController extends Controller {
       user.email,
       user.password
     );
-    this.transitionTo("dashboard");
+    this.transitionTo("index");
   }
 }

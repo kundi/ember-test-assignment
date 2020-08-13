@@ -1,19 +1,24 @@
 <div class="d-flex h-100">
   <div class="m-auto">
-    <form {{on "submit" (fn this.login this.email this.password)}}>
+    <form class="login-form" {{on "submit" (fn this.login this.email this.password)}}>
       <div class="form-group">
         <label for="exampleInputEmail1">Email</label>
-        <Input @value={{this.email}} @type="email" class="form-control" @id="exampleInputEmail1"
-          @aria-describedby="emailHelp" placeholder="Enter email" />
+        <Input @value={{this.email}} @type="email" class="form-control" @id="email-field" @aria-describedby="emailHelp"
+          placeholder="Enter email" />
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <Input @value={{this.password}} @type="password" class="form-control" @id="exampleInputPassword1"
+        <Input @value={{this.password}} @type="password" class="form-control" @id="password-field"
           placeholder="Password" />
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
       or <LinkTo @route="signup">Sign up</LinkTo>
-      {{if this.errorMessage this.errorMessage}}
+
+      {{#if this.errorMessage}}
+        <div class="login-form__error">
+          {{this.errorMessage}}
+        </div>
+      {{/if}}
     </form>
   </div>
 </div>
